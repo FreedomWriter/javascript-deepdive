@@ -31,3 +31,50 @@ var sing2 = function () {
 ```
 
 will not be fully hoisted, `sing2` will be hoisted as a variable that exists but is assinged undefined in the creation phase.
+
+tricky hoisting:
+
+```js
+var favoriteFood = "grapes";
+
+var foodThoughts = function () {
+  console.log("original fav: " + favoriteFood);
+
+  var favoriteFood = "sushi";
+
+  console.log("new fav: " + favoriteFood);
+};
+
+foodThoughts();
+```
+
+This is going to print:
+original fav: undefined
+new fav: sushi
+
+on first pass:
+
+var favoriteFood = undefined
+var foodThoughts = undefined
+
+creation phase is done.
+
+execution phase:
+
+favoriteFoods = "grapes"
+
+foodThoughts = function - function is not executed
+
+foodThoughts() gets run
+
+When we run foodThoughts() a new execution context is created, inside of which hoisting happens during the creation phase
+
+var favoriteFood = undefined
+
+creation phase ends
+execution phase begins
+first console.log returns undefined
+second one gets assigned the value of "sushi"
+
+hoisting can make code unpredictable, avoid it when you can.
+one way of avoiding it is avoiding the `var` keyword
