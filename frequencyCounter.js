@@ -40,7 +40,7 @@ function sameON2(arr1, arr2) {
 // O(n) Solution
 
 /* 
-Two loops is better than 2 nested loops 
+Two loops is better than 2 nested loops (Using 3 loops in this example, but the concept only scales)
 - if N is 1,000 elements, 2 loops means 2,000 iterations (1000 for loop 1 + 1000 for loop 2)
 - 2 nested loops where N is 1,000 elements means 1,000,000 iterations ( 1,000 loops for the outer loop and 1,000 loops for each element in the loop because of the inner loop)
 */
@@ -55,11 +55,11 @@ function sameOn(arr1, arr2) {
     frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
   }
   for (let val of arr2) {
-    // repeats the process of assigning key/value pairs to an object for the second array
+    // repeats the process of assigning key/value pairs to an object for the second array, (could also use a for loop)
     frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
   }
   for (let key in frequencyCounter1) {
-    // checks to see if the key in the first object exists squared in the second object
+    // checks to see if the key in the first object exists squared in the second object (could also use a for loop)
     if (!(key ** 2 in frequencyCounter2)) {
       return false;
     }
@@ -68,13 +68,13 @@ function sameOn(arr1, arr2) {
       return false;
     }
   }
-  console.log(`frequencyCounter1`, frequencyCounter1);
+  //   console.log(`frequencyCounter1`, frequencyCounter1);
   //   print FrequencyCounter1 = {
   //     1: 1,
   //     2: 2,
   //     3: 1,
   //   };
-  console.log(`frequencyCounter2`, frequencyCounter2);
+  //   console.log(`frequencyCounter2`, frequencyCounter2);
   //   print FrequencyCounter2 = {
   //     1: 1,
   //     4: 2,
@@ -83,6 +83,7 @@ function sameOn(arr1, arr2) {
   return true;
 }
 
-console.log(sameOn([1, 2, 2, 3], [4, 4, 1, 9]));
-console.log(sameOn([1, 2, 3], [1, 9]));
-console.log(sameOn([1, 2, 3], [4, 4, 9]));
+// console.log(sameOn([1, 2, 2, 3], [4, 4, 1, 9]));
+// console.log(sameOn([1, 2, 3], [1, 9]));
+// console.log(sameOn([1, 2, 3], [4, 4, 9]));
+// console.log(sameOn([1, 2, 3, 6], [4, 4, 9, 66]));
