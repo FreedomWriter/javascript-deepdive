@@ -10,7 +10,7 @@ function sayMyName() {
   return findName();
 }
 
-console.log(sayMyName());
+// console.log(sayMyName());
 
 /* 
 Global Execution context
