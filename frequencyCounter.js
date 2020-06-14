@@ -51,22 +51,38 @@ function sameOn(arr1, arr2) {
   let frequencyCounter1 = {};
   let frequencyCounter2 = {};
   for (let val of arr1) {
+    // assigns a key/value pair to object where the object key === the value in the array being looped over and the object value === the number of times that value exists in the array. Assigns to 1 on inital encounter and increments that value if it encounters the key again in the array.
     frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
   }
   for (let val of arr2) {
+    // repeats the process of assigning key/value pairs to an object for the second array
     frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
   }
   for (let key in frequencyCounter1) {
+    // checks to see if the key in the first object exists squared in the second object
     if (!(key ** 2 in frequencyCounter2)) {
       return false;
     }
+    // checks the values in each object for equality, veryifying the frequecy ( does the squared value in the second object appear the same number of times in it's counterpart in the second object)
     if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
       return false;
     }
   }
+  console.log(`frequencyCounter1`, frequencyCounter1);
+  //   print FrequencyCounter1 = {
+  //     1: 1,
+  //     2: 2,
+  //     3: 1,
+  //   };
+  console.log(`frequencyCounter2`, frequencyCounter2);
+  //   print FrequencyCounter2 = {
+  //     1: 1,
+  //     4: 2,
+  //     9: 1,
+  //   };
   return true;
 }
 
-console.log(sameOn([1, 2, 3], [4, 1, 9]));
+console.log(sameOn([1, 2, 2, 3], [4, 4, 1, 9]));
 console.log(sameOn([1, 2, 3], [1, 9]));
 console.log(sameOn([1, 2, 3], [4, 4, 9]));
