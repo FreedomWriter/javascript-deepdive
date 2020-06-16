@@ -30,9 +30,40 @@ function validAnagram(str1, str2) {
   return true;
 }
 
-console.log(validAnagram("", ""));
-console.log(validAnagram("aaz", "zza"));
-console.log(validAnagram("anagram", "nagaram"));
-console.log(validAnagram("awesome", "awesom"));
-console.log(validAnagram("qwerty", "qeywrt"));
-console.log(validAnagram("testtwisttime", "timetwisttest"));
+// console.log(validAnagram("", ""));
+// console.log(validAnagram("aaz", "zza"));
+// console.log(validAnagram("anagram", "nagaram"));
+// console.log(validAnagram("awesome", "awesom"));
+// console.log(validAnagram("qwerty", "qeywrt"));
+// console.log(validAnagram("testtwisttime", "timetwisttest"), "last");
+
+function solution2(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  const lookup = {};
+
+  for (let i = 0; i < str1.length; i++) {
+    let letter = str1[i];
+    //if letter exists, increment, otherwise set to 1
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
+  }
+  for (let i = 0; i < str2.length; i++) {
+    let letter = str2[i];
+    if (!lookup[letter]) {
+      // zero is falsy
+      return false;
+    } else {
+      lookup[letter] -= 1;
+    }
+  }
+  return true;
+}
+
+// console.log(solution2("", ""));
+// console.log(solution2("aaz", "zza"));
+// console.log(solution2("anagram", "nagaram"));
+// console.log(solution2("awesome", "awesom"));
+// console.log(solution2("qwerty", "qeywrt"));
+// console.log(solution2("testtwisttime", "timetwisttest"), "last");
