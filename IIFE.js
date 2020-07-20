@@ -19,5 +19,5 @@ const myIffe = (function () {
 
 const someVal = "Globally scoped someVal";
 
-console.log(`myIffe: ${myIffe.func()}`);
-console.log({ someVal });
+// console.log(`myIffe: ${myIffe.func()}`);
+// console.log({ someVal });
