@@ -18,9 +18,9 @@ const obj = {
   },
 };
 
-console.log(obj.sing());
-console.log(obj.speak());
-console.log(obj.singAgain());
+// console.log(obj.sing());
+// console.log(obj.speak());
+// console.log(obj.singAgain());
 
 function importantPerson() {
   console.log(this.name + "!!");
@@ -38,5 +38,5 @@ const obj2 = {
   importantPerson: importantPerson,
 };
 
-importantPerson();
-obj1.importantPerson();
+// importantPerson();
+// obj1.importantPerson();
