@@ -20,11 +20,11 @@ class ArrStack {
 
 const myArrStack = new ArrStack();
 
-console.log("push", myArrStack.push("first item"));
-console.log("push", myArrStack.push("second item"));
-console.log("push", myArrStack.push("third item"));
-console.log("peek", myArrStack.peek());
-console.log("pop", myArrStack.pop());
-console.log("pop", myArrStack.pop());
-console.log("pop", myArrStack.pop());
-console.log("peek", myArrStack.peek());
+// console.log("push", myArrStack.push("first item"));
+// console.log("push", myArrStack.push("second item"));
+// console.log("push", myArrStack.push("third item"));
+// console.log("peek", myArrStack.peek());
+// console.log("pop", myArrStack.pop());
+// console.log("pop", myArrStack.pop());
+// console.log("pop", myArrStack.pop());
+// console.log("peek", myArrStack.peek());
