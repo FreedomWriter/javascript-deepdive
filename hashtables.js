@@ -13,5 +13,5 @@ class HashTable {
 }
 
 const myHashTable = new HashTable(50);
-myHashTable.set("grapes", 100);
-console.log(myHashTable.get("grapes"));
+// myHashTable.set("grapes", 100);
+// console.log(myHashTable.get("grapes"));
