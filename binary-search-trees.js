@@ -177,9 +177,9 @@ console.log(bst.remove(4));
 console.log(bst.lookup(4));
 console.log(bst);
 // console.log(JSON.stringify(traverse(bst.root)));
-function traverse(node) {
-  const tree = { value: node.value };
-  tree.left = node.left === null ? null : traverse(node.left);
-  tree.right = node.right === null ? null : traverse(node.right);
-  return tree;
-}
+// function traverse(node) {
+//   const tree = { value: node.value };
+//   tree.left = node.left === null ? null : traverse(node.left);
+//   tree.right = node.right === null ? null : traverse(node.right);
+//   return tree;
+// }
