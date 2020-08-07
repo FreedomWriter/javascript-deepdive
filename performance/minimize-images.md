@@ -14,3 +14,18 @@
 - Remove image metadata - <https://www.verexif.com/en/> does this meta data often includes gps coordinates and other info, not just good to remove for performance, but also for privacy
 
 [Media Query Cheat Sheet](https://gist.github.com/bartholomej/8415655)
+
+## Vanilla
+
+HTML
+
+1. Load <style> in <head>
+2. Load <cript> right before </body>
+
+CSS
+
+3. Load only what is needed
+4. Above the fold leaoding (might consider internal css where there is a <style>CSS here</style>)
+5. Media Attribues - can be loaded in HTML
+   ex. <link rel="stylesheet" href="./style2.css" media= "only screen and (min-width:500px)">
+6. Less Specificty
