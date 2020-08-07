@@ -29,3 +29,18 @@ CSS
 5. Media Attribues - can be loaded in HTML
    ex. <link rel="stylesheet" href="./style2.css" media= "only screen and (min-width:500px)">
 6. Less Specificty
+
+JS
+
+- JS is parser blocking
+- Load Scripts asynchronously only need to add the async keyword
+  - add to anything that doesnt' affect the DOM ie google analytic scripts or tracking scripts
+  - <script async>
+- Defer script loading
+  - will wait to execute script until HTML has been parsed and will execute in order of appearance
+  - good for scripts that will act on the render tree or DOM but aren't imporant to loading the above the fold content
+- If core functionality requires JS use async otherwise defer, critical scripts don't get deferred or ran async
+- MinimzeDOM manipulation
+- Avoid long running JS
+
+[additional information about script loading with async and defer](https://stackoverflow.com/questions/10808109/script-tag-async-defer)
