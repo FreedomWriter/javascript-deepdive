@@ -11,4 +11,6 @@
 - Resize image based on size it will be displayed - if the images is 1000px but you're only displaying it at 500px, resize the image!
 - Display different sized images for different backgrounds (use medial queries)
 - Use CDNs (content delivery network) like imigx
-- Remove image metadata - www.verexif.com/en/inddex.php does this meta data often includes gps coordinates and other info, not just good to remove for performance, but also for privacy
+- Remove image metadata - <https://www.verexif.com/en/> does this meta data often includes gps coordinates and other info, not just good to remove for performance, but also for privacy
+
+[Media Query Cheat Sheet](https://gist.github.com/bartholomej/8415655)
