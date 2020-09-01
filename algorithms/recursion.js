@@ -33,5 +33,5 @@ function findFactorialIterative(n) {
   }
 }
 
-console.log(findFactorialRecursive(5));
-console.log(findFactorialIterative(5));
+// console.log(findFactorialRecursive(5));
+// console.log(findFactorialIterative(5));
