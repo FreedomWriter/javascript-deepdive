@@ -142,6 +142,44 @@ class Graph {
 
     return result;
   }
+
+  bft(start) {
+    // accepts a starting vertex
+    // create a queue (can use a list) and place the starting vertex in it
+    const stack = [start];
+    // create a list to store the nodes visited, to be returned
+    const result = [];
+    // create an object to track whether the nodes have been visited
+    const visited = {};
+    let current;
+
+    // mark the starting vertex as visited
+    visited[start] = true;
+
+    visited[start] = true;
+    // while there is something in the queue
+    while (stack.length) {
+      // console.log(stack);
+      // take the first item out
+      current = stack.shift();
+
+      // add it to results
+      result.push(current);
+
+      // for all the neighbors
+      this.adjacencyList[current].forEach((neighbor) => {
+        // if not visited
+        if (!visited[neighbor]) {
+          // mark as visited
+          visited[neighbor] = true;
+          // push all neighbors into stack
+          stack.push(neighbor);
+        }
+      });
+    }
+
+    return result;
+  }
 }
 
 g = new Graph();
@@ -162,3 +200,4 @@ g.addEdge("E", "F");
 console.log(g.adjacencyList);
 console.log(g.dftRecursive("A"));
 console.log(g.dftIterative("A"));
+console.log(g.bft("A"));
