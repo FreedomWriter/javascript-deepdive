@@ -156,7 +156,6 @@ class Graph {
     // mark the starting vertex as visited
     visited[start] = true;
 
-    visited[start] = true;
     // while there is something in the queue
     while (stack.length) {
       // console.log(stack);
