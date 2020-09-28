@@ -40,6 +40,8 @@
 //       idx = parentIdx;
 //     }
 //   }
+
+// O(log n)
 //   insertValue(val) {
 //     // push the value into the values property on the heap
 //     this.values.push(val);
@@ -91,6 +93,7 @@
 //     }
 //   }
 
+// O(log n)
 //   extractMax() {
 //     // grab a reference to the current max (the root)
 //     const max = this.values[0];
