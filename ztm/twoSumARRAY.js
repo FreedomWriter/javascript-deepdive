@@ -50,3 +50,59 @@ function twoSum(arr, target) {
 }
 
 console.log(twoSum([1, 3, 7, 9, 2], 11));
+
+// Video's first pass
+function twoSum2(arr, target) {
+  if (!arr.length > 1) {
+    return;
+  }
+  for (let p1 = 0; p1 < arr.length; p1++) {
+    const numToFind = target - arr[p1];
+    for (let p2 = p1 + 1; p2 < arr.length; p2++) {
+      if (arr[p2] === numToFind) {
+        return [p1, p2];
+      }
+    }
+  }
+  return null;
+}
+
+console.log("2", twoSum2([1, 3, 7, 9, 2], 11));
+
+function optTwoSum(arr, target) {
+  let solution = {};
+  if (arr.length && arr.length < 3) {
+    if (target === arr[0] + arr[1]) {
+      return [0, 1];
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    const numToFind = target - arr[i];
+    solution[numToFind] = i;
+    if (solution[arr[i]]) {
+      return [solution[arr[i]], i];
+    }
+  }
+
+  return null;
+}
+
+console.log("OPTIMAL", optTwoSum([1, 3, 7, 9, 2], 11));
+
+function optTwoSum2(arr, target) {
+  let solution = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    const currMapVal = solution[arr[i]];
+    if (currMapVal >= 0) {
+      return [currMapVal, i];
+    } else {
+      const numToFind = target - arr[i];
+      solution[numToFind] = i;
+    }
+  }
+
+  return null;
+}
+
+console.log("OPTIMAL2", optTwoSum2([1, 3, 7, 9, 2], 11));
