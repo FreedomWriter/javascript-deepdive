@@ -45,7 +45,8 @@ maxArea = 0
 function mostWater(arr) {
   let maxArea = 0;
   let curMax;
-  if (!arr.length > 1) return maxArea;
+  // This line is not needed because of the second for loop which initializes p2 as 1 which is not less than the length of an array with 0 or 1 elements
+  //   if (!arr.length > 1) return maxArea;
   for (let p1 = 0; p1 < arr.length; p1++) {
     for (let p2 = p1 + 1; p2 < arr.length; p2++) {
       curMax = Math.min(arr[p1], arr[p2]) * (p2 - p1);
@@ -65,7 +66,7 @@ console.log(mostWater([6]));
 
 function mostWater2(arr) {
   let maxArea = 0;
-  if (!arr.length > 1) return maxArea;
+  //   if (!arr.length > 1) return maxArea;
   for (let p1 = 0; p1 < arr.length; p1++) {
     for (let p2 = p1 + 1; p2 < arr.length; p2++) {
       const height = Math.min(arr[p1], arr[p2]);
@@ -82,3 +83,58 @@ console.log(mostWater2([6, 9, 3, 4, 5, 8]));
 console.log(mostWater2([7, 1, 2, 3, 9]));
 console.log(mostWater2([]));
 console.log(mostWater2([6]));
+
+/*
+SHIFTING POINTERS:
+
+[4, 8, 1, 2, 3, 9]
+*/
+
+function shiftingPointers(arr) {
+  let p1 = 0;
+  let p2 = arr.length - 1;
+  let maxArea = 0;
+  while (p1 < p2) {
+    const height = Math.min(arr[p1], arr[p2]);
+    const width = p2 - p1;
+    const area = height * width;
+    maxArea = Math.max(maxArea, area);
+    if (arr[p1] < arr[p2]) {
+      p1 += 1;
+    } else {
+      p2 -= 1;
+    }
+  }
+
+  return maxArea;
+}
+
+console.log(shiftingPointers([6, 9, 3, 4, 5, 8]));
+console.log(shiftingPointers([7, 1, 2, 3, 9]));
+console.log(shiftingPointers([]));
+console.log(shiftingPointers([6]));
+
+function shiftingPointers2(arr) {
+  let p1 = 0;
+  let p2 = arr.length - 1;
+  let maxArea = 0;
+  let curMax;
+  while (p1 < p2) {
+    curMax = Math.min(arr[p1], arr[p2]) * (p2 - p1);
+    if (curMax > maxArea) {
+      maxArea = curMax;
+    }
+    if (arr[p1] < arr[p2]) {
+      p1 += 1;
+    } else {
+      p2 -= 1;
+    }
+  }
+
+  return maxArea;
+}
+
+console.log(shiftingPointers2([6, 9, 3, 4, 5, 8]));
+console.log(shiftingPointers2([7, 1, 2, 3, 9]));
+console.log(shiftingPointers2([]));
+console.log(shiftingPointers2([6]));
