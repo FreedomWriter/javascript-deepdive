@@ -30,3 +30,7 @@ STEP THREE - SOLVE WITHOUT CODE
 -------------------------------
 
 */
+
+function trapping(arr) {
+  console.log(arr);
+}
