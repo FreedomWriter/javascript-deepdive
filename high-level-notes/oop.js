@@ -9,8 +9,6 @@ In oop the data can be refered to as state
 - Class based
 */
 
-/* Factory Functions */
-
 // naive approach - create an object
 // we would have to copy/paste to create new elf's
 // we do have encapsulation
@@ -72,6 +70,7 @@ elfFunction.attack = elfFunctions.attack;
 // this approach creates a definitive link between elfFunctionStore and newElf created by createElf3
 // this is an example of true prototypal inheritance, however this approach is not standard or widely accepted by the js community
 // this wouldn't actually be considered OOP
+// this style (using Object.create()) is sometimes referred to as pure prototypal inheritance
 const elfFunctions2 = {
   attack(weapon) {
     return "elfFunction attack with " + weapon;
@@ -108,7 +107,30 @@ ConstructorElf.prototype.attack = function () {
   return "Constructor attack: " + this.weapon;
 };
 
-const bob = new ConstructorElf("Bob", "Constructor weapon");
-console.log(bob.name);
-console.log(bob.weapon);
-console.log(bob.attack());
+const Bob = new ConstructorElf("Bob", "Constructor weapon");
+// console.log(Bob.name);
+// console.log(Bob.weapon);
+// console.log(Bob.attack());
+
+class Elf {
+  constructor(name, weapon) {
+    this.name = name;
+    this.weapon = weapon;
+  }
+  // methods are defined outside of the constructor to provide better space complexity - there is one attack methode shared by all instances. Attributes defined in the constructor are created and stored in unique memory locations for each instance.
+  attack() {
+    return this.name + " attacks with " + this.weapon;
+  }
+}
+
+class Smurf extends Elf {
+  constructor(name, weapon) {
+    super(name, weapon);
+  }
+}
+
+const Alf = new Elf("Alf", "Cavities!");
+console.log(Alf.attack());
+
+const Brainy = new Smurf("Brainy", "Book Smarts!");
+console.log(Brainy.attack());
