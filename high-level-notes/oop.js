@@ -123,14 +123,34 @@ class Elf {
   }
 }
 
+// called subclassing
 class Smurf extends Elf {
-  constructor(name, weapon) {
+  constructor(name, weapon, home) {
+    // console.log(this);
+    //  will throw an error becuse in order to use this in a subclass, super needs to be called
     super(name, weapon);
+    console.log(this);
+    this.home = home;
+  }
+
+  welcome() {
+    return `Welcome to my ${this.home}`;
   }
 }
 
 const Alf = new Elf("Alf", "Cavities!");
 console.log(Alf.attack());
 
-const Brainy = new Smurf("Brainy", "Book Smarts!");
+const Brainy = new Smurf("Brainy", "Book Smarts!", "Toad Stool");
 console.log(Brainy.attack());
+console.log(Brainy.welcome());
+
+/*
+THIS keyword
+------------
+
+1. binding through the new keyword (new binding)
+2. implicit binding - create an object, inside of that object, this will refer to the object
+3. explicit binding - using .bind()
+4. lexical scoping - arrow functions
+*/
