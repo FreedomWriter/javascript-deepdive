@@ -89,32 +89,96 @@ IMMUTABILITY
 ------------
 
 in laymen's terms, immutability means not changing the state (data), but instead, making copies of the state and returning a new copy every time.
+*/
 
-    const obj = {name: "Change"}
-    immutablity:
-      const newName = (obj, newName) => {
-        return {...obj, name: newName} 
-      }
+const objI = { name: "Change" };
+//immutablity:
+const newName = (objI, newName) => {
+  return { ...objI, name: newName };
+};
 
-    not following the principles of immutability:
-      obj.name = "Mutated State"
-
+//not following the principles of immutability:
+obj.name = "Mutated State";
+/*
 CURRYING
 -------
 The technique of translating the evaluation of a function that takes multiple arguments into evaluating a sequence of functions, each with a single argument.
+*/
+const multiplyNoCurry = (a, b) => a * b;
+// because of closures, we have access to the a variable inside the function with the b variable
+const curriedMultiply = (a) => (b) => a * b;
+// console.log(curriedMultiply(5)(5));
 
-    const multiplyNoCurry = (a, b) => a * b;
-    // because of closures, we have access to the a variable inside the function with the b variable
-    const curriedMultiply = (a) => (b) => a * b;
-    console.log(curriedMultiply(5)(5));
-    // this allows you to store "instances" of the curried function like below
-    const curriedMultiplyBy5 = curriedMultiply(5);
-    console.log(curriedMultiplyBy5(10));
-    console.log(curriedMultiplyBy5(1));
+// this allows you to store "instances" of the curried function like below
+const curriedMultiplyBy5 = curriedMultiply(5);
+// console.log(curriedMultiplyBy5(10));
+// console.log(curriedMultiplyBy5(1));
 
+/*
 PARTIAL APPLICATION
+-------------------
+The process of producing a function with a smaller number of parameters.
+This means taking a function, applying some of it's arguments into the function (so they are stored in memory) and then uses closures to later on be called with the remaining arguments
+
+On the second call, I expect all the arguments
+*/
+
+const multiplyP = (a, b, c) => a * b * c;
+// passes in the first parameter
+const partialMuliplyBy5 = multiplyP.bind(null, 5);
+// console.log(partialMuliplyBy5(4, 5));
+
+/* 
+CACHING
+-------
+A way to store values in memory so you can use them later
+
+MEMOIZATION - is a specific form of caching
+------------
+a way of storing the solution to a subproblem, so it doesn't have to be calculated again.
+
 
 */
+
+function addTo80(n) {
+  console.log("long running execution");
+  return n + 80;
+}
+
+console.log(addTo80(5));
+console.log(addTo80(5));
+console.log(addTo80(5));
+
+// let cache = {};
+
+// function memoizedAddTo80(n) {
+//   if (n in cache) {
+//     return cache[n];
+//   } else {
+//     console.log("long running execution");
+//     cache[n] = n + 80;
+//     return cache[n];
+//   }
+// }
+
+// We don't want cache in the global scope. This would render our function impure. So we use closure to move the cache into the body of the function. This also necessitates
+function memoizedAddTo80() {
+  let cache = {};
+  return function (n) {
+    if (n in cache) {
+      return cache[n];
+    } else {
+      console.log("long running execution");
+      cache[n] = n + 80;
+      return cache[n];
+    }
+  };
+}
+const memoized = memoizedAddTo80();
+
+console.log(memoized(5));
+console.log(memoized(5));
+console.log(memoized(5));
 
 // const jeff = {
 //   name: "Jeff",
