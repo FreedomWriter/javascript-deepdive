@@ -52,8 +52,37 @@ not indempotent: - will decrease by 50 each time it's called within itself
   const helper = (num) => num - 50;
   console.log(helper(helper(helper(100))));
 
-Math.abs(Math.abs(-50))
+IMPERATIVE VS DECLARATIVE
+-------------------------
 
+Declarative says:
+
+  "hey, can you pass me that water bottle?"
+
+Imperative says: 
+
+  "hey, can you "
+  1. lift your arm
+  2. move it towards my water bottle
+  3. grab my water bottle with your hand
+  4. move your hand towards me
+  5. release the water bottle into my hand
+
+And if we were being accurate, we would have to break each of those steps into the steps needed to accomplish those. 
+
+Imperative:
+  For loop
+
+Declarative:
+  Array.forEach()
+  DOM Manipulation
+
+Imperative:
+  tells not just what to do, but how to do it
+  React
+
+Declarative:
+  tell it what to do
 */
 
 const notGood1 = (num) => Math.random(num);
