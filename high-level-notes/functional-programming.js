@@ -36,7 +36,8 @@ IDEMPOTENT
 ----------
 The idea of a function that always returns or does what we expect it to do. This differs from the idea of a pure function in that a function can be indempotent and not pure. A easy way to demonstrate this is to look at the following two functions:
 
-
+NOT idempotent: - we can not reasonably expect to know what this will return
+    const notGood = (num) => Math.random(num)
 
 idempotent, not pure:
     const notGood1 =(num) => console.log(num)
@@ -57,85 +58,112 @@ IMPERATIVE VS DECLARATIVE
 
 Declarative says:
 
-  "hey, can you pass me that water bottle?"
+    "hey, can you pass me that water bottle?"
 
 Imperative says: 
 
-  "hey, can you "
-  1. lift your arm
-  2. move it towards my water bottle
-  3. grab my water bottle with your hand
-  4. move your hand towards me
-  5. release the water bottle into my hand
+    "hey, can you "
+    1. lift your arm
+    2. move it towards my water bottle
+    3. grab my water bottle with your hand
+    4. move your hand towards me
+    5. release the water bottle into my hand
 
 And if we were being accurate, we would have to break each of those steps into the steps needed to accomplish those. 
 
-Imperative:
-  For loop
+    Imperative:
+      For loop
 
-Declarative:
-  Array.forEach()
-  DOM Manipulation
+    Declarative:
+      Array.forEach()
+      DOM Manipulation
 
-Imperative:
-  tells not just what to do, but how to do it
-  React
+    Imperative:
+      tells not just what to do, but how to do it
+      React
 
-Declarative:
-  tell it what to do
+    Declarative:
+      tell it what to do
+
+IMMUTABILITY
+------------
+
+in laymen's terms, immutability means not changing the state (data), but instead, making copies of the state and returning a new copy every time.
+
+    const obj = {name: "Change"}
+    immutablity:
+      const newName = (obj, newName) => {
+        return {...obj, name: newName} 
+      }
+
+    not following the principles of immutability:
+      obj.name = "Mutated State"
+
+CURRYING
+-------
+The technique of translating the evaluation of a function that takes multiple arguments into evaluating a sequence of functions, each with a single argument.
+
+    const multiplyNoCurry = (a, b) => a * b;
+    // because of closures, we have access to the a variable inside the function with the b variable
+    const curriedMultiply = (a) => (b) => a * b;
+    console.log(curriedMultiply(5)(5));
+    // this allows you to store "instances" of the curried function like below
+    const curriedMultiplyBy5 = curriedMultiply(5);
+    console.log(curriedMultiplyBy5(10));
+    console.log(curriedMultiplyBy5(1));
+
+PARTIAL APPLICATION
+
 */
 
-const notGood1 = (num) => Math.random(num);
-const notGood2 = (num) => console.log(num);
+// const jeff = {
+//   name: "Jeff",
+//   active: true,
+//   cart: [],
+//   purchases: [],
+//   total: null,
+// };
 
-const jeff = {
-  name: "Jeff",
-  active: true,
-  cart: [],
-  purchases: [],
-  total: null,
-};
+// const addItemWithSideEffects = (item, user) => user.cart.push(item);
 
-const addItemWithSideEffects = (item, user) => user.cart.push(item);
+// const addTaxWithSideEffects = (price) => price * 0.03;
+// const purchaseItemsWithSideEffects = (user) => {
+//   let runningTotal = 0;
+//   user.cart.forEach((cartItem) => {
+//     tax = addTaxWithSideEffects(cartItem.price);
+//     runningTotal += cartItem.price + tax;
+//     cartItem.price = {
+//       price: cartItem.price,
+//       tax,
+//     };
+//     user.purchases.push(cartItem);
+//   });
+//   user.cart = [];
+//   user.total = runningTotal;
+//   return user;
+// };
 
-const addTaxWithSideEffects = (price) => price * 0.03;
-const purchaseItemsWithSideEffects = (user) => {
-  let runningTotal = 0;
-  user.cart.forEach((cartItem) => {
-    tax = addTaxWithSideEffects(cartItem.price);
-    runningTotal += cartItem.price + tax;
-    cartItem.price = {
-      price: cartItem.price,
-      tax,
-    };
-    user.purchases.push(cartItem);
-  });
-  user.cart = [];
-  user.total = runningTotal;
-  return user;
-};
+// const refundItemWithSideEffects = (user, item) => {
+//   let newTotal = user.total;
+//   const purchases = user.purchases.filter((purchasedItem) => {
+//     if (purchasedItem.item !== item.item) {
+//       return purchasedItem;
+//     } else {
+//       newTotal -= purchasedItem.price.price + purchasedItem.price.tax;
+//     }
+//   });
+//   user.purchases = purchases;
+//   user.total = newTotal;
+// };
 
-const refundItemWithSideEffects = (user, item) => {
-  let newTotal = user.total;
-  const purchases = user.purchases.filter((purchasedItem) => {
-    if (purchasedItem.item !== item.item) {
-      return purchasedItem;
-    } else {
-      newTotal -= purchasedItem.price.price + purchasedItem.price.tax;
-    }
-  });
-  user.purchases = purchases;
-  user.total = newTotal;
-};
+// // console.log(addItemWithSideEffects({ item: "udemy course", price: 5 }, jeff));
+// // console.log(
+// //   addItemWithSideEffects({ item: "egghead course", price: 15 }, jeff)
+// // );
+// // console.log(addItemWithSideEffects({ item: "kent course", price: 150 }, jeff));
 
-// console.log(addItemWithSideEffects({ item: "udemy course", price: 5 }, jeff));
-// console.log(
-//   addItemWithSideEffects({ item: "egghead course", price: 15 }, jeff)
-// );
-// console.log(addItemWithSideEffects({ item: "kent course", price: 150 }, jeff));
-
-// console.log(purchaseItemsWithSideEffects(jeff));
-// console.log(
-//   refundItemWithSideEffects(jeff, { item: "udemy course", price: 5 })
-// );
-// console.log(jeff);
+// // console.log(purchaseItemsWithSideEffects(jeff));
+// // console.log(
+// //   refundItemWithSideEffects(jeff, { item: "udemy course", price: 5 })
+// // );
+// // console.log(jeff);
