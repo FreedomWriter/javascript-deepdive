@@ -74,9 +74,8 @@ Async/Await is part of ES8 and built on top of Promises
 It is liked for it's readability, it's really just syntactic sugar
 */
 
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((resp) => resp.json())
-  .then((data) => console.log("promise chaining", data));
+fetch("https://jsonplaceholder.typicode.com/users").then((resp) => resp.json());
+//   .then((data) => console.log("promise chaining", data));
 
 async function getData() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -85,4 +84,24 @@ async function getData() {
   return data;
 }
 
-getData();
+// getData();
+
+const getAllData = async function () {
+  try {
+    const [users, posts, albums] = await Promise.all(
+      urls.map((url) => {
+        return fetch(url)
+          .then((resp) => resp.json())
+          .catch((err) => err.message);
+      })
+    );
+
+    console.log({ users });
+    console.log({ posts });
+    console.log({ albums });
+  } catch (err) {
+    console.log(err + "OOOHHHH NOOOOOS");
+  }
+};
+
+getAllData();
