@@ -2,7 +2,7 @@ testArr = [1, 2, 3, 4, 5, 6, 7, 15];
 
 function fizzBuzz() {
   answer = [];
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 0; i <= 100; i++) {
     // console.log(i);
     // console.log(i % 3 === 0);
     // console.log(i % 5 === 0);
@@ -23,7 +23,7 @@ function fizzBuzz() {
 
 function fizzBuzz2(arr) {
   answer = [];
-  for (let i = 1; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     // console.log(i);
     // console.log(i % 3 === 0);
     // console.log(i % 5 === 0);
@@ -40,4 +40,4 @@ function fizzBuzz2(arr) {
   return answer;
 }
 
-// console.log(fizzBuzz2(testArr));
+console.log(fizzBuzz2(testArr));
