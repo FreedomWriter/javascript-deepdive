@@ -1,4 +1,4 @@
-console.log("COMPOSITION VS INHERITANCE");
+// console.log("COMPOSITION VS INHERITANCE");
 
 /*
 COMPOSITION
