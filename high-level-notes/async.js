@@ -55,15 +55,34 @@ const urls = [
   "https://jsonplaceholder.typicode.com/albums",
 ];
 
-Promise.all(
-  urls.map((url) => {
-    return fetch(url)
-      .then((resp) => resp.json())
-      .then((res) => {
-        console.log(res[0]);
-        console.log(res[1]);
-        console.log(res[2]);
-      })
-      .catch((err) => console.log(err.message));
-  })
-);
+// Promise.all(
+//   urls.map((url) => {
+//     return fetch(url)
+//       .then((resp) => resp.json())
+//       .then((res) => {
+//         console.log(res[0]);
+//         console.log(res[1]);
+//         console.log(res[2]);
+//       })
+//       .catch((err) => console.log(err.message));
+//   })
+// );
+
+/*
+Async/Await is part of ES8 and built on top of Promises
+-----------
+It is liked for it's readability, it's really just syntactic sugar
+*/
+
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then((resp) => resp.json())
+  .then((data) => console.log("promise chaining", data));
+
+async function getData() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await response.json();
+  console.log("async/await", data);
+  return data;
+}
+
+getData();
