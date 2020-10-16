@@ -26,3 +26,33 @@ const fightModule = (function () {
 
 console.log(fightModule.fight("natalie", "no"));
 console.log(fightModule.fight());
+
+/*
+CommonJS and AMD (asynchronous module definition)
+this is what I'm familiar with through node
+*/
+
+// const api = require("api");
+
+// function someFunc() {}
+
+// module.exports = {
+//   someFunc,
+// };
+
+// Modules are meant to be loaded synchronously- which works fine in node but not ideal for browser use
+
+// AMD looks like this:
+// designed specifically for the browser to load scripts or modules asynchronously
+
+// define(["module1", "module2"], function (module1Import, module2Import) {
+//   let module1 = module1Import; //.fight;
+//   let module2 = module2Import; // .importedFunc2
+
+//   function dance() {
+//     //do stuff
+//   }
+//   return {
+//     dance: dance,
+//   };
+// });
