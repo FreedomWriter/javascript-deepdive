@@ -40,3 +40,15 @@ function a() {
 }
 
 console.log(a());
+
+// Extending the Error
+class AuthenticationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "Authentication Error";
+    this.favoriteSnack = "Me bish";
+  }
+}
+
+const aE = new AuthenticationError("woooowowowowoowowoowow");
+console.log(aE.favoriteSnack);
