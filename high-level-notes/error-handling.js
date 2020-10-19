@@ -41,7 +41,7 @@ function a() {
 
 console.log(a());
 
-// Extending the Error
+// Extending the Error - can create custom error messages which is better for security
 class AuthenticationError extends Error {
   constructor(message) {
     super(message);
