@@ -32,27 +32,29 @@
 // */
 
 // function trapping(heights) {
+//   // will keep track of how much water we've found and be our return value
 //   let totalWater = 0;
-//   let leftP, rightP, maxLeft, maxRight;
-
+//   let leftP, rightP, maxLeft, maxRight, curWater;
+//   // loop over the array
 //   for (let p = 0; p < heights.length; p++) {
 //     leftP = p;
 //     rightP = p;
 //     maxLeft = 0;
 //     maxRight = 0;
 
+//     // find the maxLeft value
 //     while (leftP >= 0) {
 //       maxLeft = Math.max(maxLeft, heights[leftP]);
 //       leftP--;
 //     }
-
+//     // find the maxRight value
 //     while (rightP < heights.length) {
 //       maxRight = Math.max(maxRight, heights[rightP]);
 //       rightP++;
 //     }
-
-//     const curWater = Math.min(maxLeft, maxRight) - heights[p];
-
+//     // curWater represents the amount of water above the current position
+//     curWater = Math.min(maxLeft, maxRight) - heights[p];
+//     // as long as current water is greater than zero (non negative), add it to the total
 //     if (curWater >= 0) {
 //       totalWater += curWater;
 //     }
