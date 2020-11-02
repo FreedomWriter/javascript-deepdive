@@ -37,6 +37,10 @@ STEP THREE - SOLVE WITHOUT CODE
 function findLongestSubstringNoRepeating(str) {
   let longestLength = 0;
 
+  if (str.length <= 1) {
+    longestLength = 1;
+  }
+
   for (let i = 0; i < str.length; i++) {
     let j = i + 1;
     // console.log(str[i] === str[j]);
@@ -62,3 +66,29 @@ function findLongestSubstringNoRepeating(str) {
 console.log(findLongestSubstringNoRepeating("abccabb"));
 console.log(findLongestSubstringNoRepeating("ccccccc"));
 console.log(findLongestSubstringNoRepeating("abcbda"));
+console.log(findLongestSubstringNoRepeating("a"));
+
+function findLongestSubstringNoRepeatingOptimized(str) {
+  let longestLength = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let j = i + 1;
+    // console.log(str[i] === str[j]);
+    // console.log("str[i]: ", str[i], " str[j]: ", str[j]);
+    while (str[j] && str[i] !== str[j]) {
+      //   console.log(str[i] === str[j]);
+      //   console.log("str[i]: ", str[i], " str[j]: ", str[j]);
+      //   console.log("i: ", i, " j: ", j, " j-i: ", j - i);
+
+      if (longestLength < j - i) {
+        longestLength = j - i;
+      }
+      j += 1;
+    }
+  }
+  return longestLength;
+}
+
+// console.log(findLongestSubstringNoRepeatingOptimized("abccabb"));
+// console.log(findLongestSubstringNoRepeatingOptimized("ccccccc"));
+// console.log(findLongestSubstringNoRepeatingOptimized("abcbda"));
