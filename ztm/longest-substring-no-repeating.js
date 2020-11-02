@@ -34,62 +34,88 @@ STEP THREE - SOLVE WITHOUT CODE
 
 */
 
-function findLongestSubstringNoRepeating(str) {
+function findLongestSubstringNoRepeating(s) {
   let longestLength = 0;
 
-  if (str.length === 1) {
-    longestLength = 1;
+  if (s.length <= 1) {
+    return s.length;
   }
 
-  for (let i = 0; i < str.length; i++) {
-    let j = i + 1;
-    // console.log(str[i] === str[j]);
-    // console.log("str[i]: ", str[i], " str[j]: ", str[j]);
-    if (str[i] === str[j] && j - i > longestLength) {
-      longestLength = 1;
-    }
+  for (let left = 0; left < s.length; left++) {
+    let seenChars = {},
+      curLongest = 0;
 
-    while (str[j] && str[i] !== str[j]) {
-      //   console.log(str[i] === str[j]);
-      //   console.log("str[i]: ", str[i], " str[j]: ", str[j]);
-      //   console.log("i: ", i, " j: ", j, " j-i: ", j - i);
+    for (let right = left; right < s.length; right++) {
+      const curChar = s[right];
 
-      if (longestLength < j - i) {
-        longestLength = j - i;
+      if (!seenChars[curChar]) {
+        curLongest++;
+        seenChars[curChar] = true;
+        if (longestLength < curLongest) {
+          longestLength = curLongest;
+        }
+      } else {
+        break;
       }
-      j += 1;
     }
   }
   return longestLength;
 }
 
-console.log(findLongestSubstringNoRepeating("abccabb"));
-console.log(findLongestSubstringNoRepeating("ccccccc"));
-console.log(findLongestSubstringNoRepeating("abcbda"));
-console.log(findLongestSubstringNoRepeating("a"));
-console.log(findLongestSubstringNoRepeating(""));
+// console.log(findLongestSubstringNoRepeating("abccabb"));
+// console.log(findLongestSubstringNoRepeating("ccccccc"));
+// console.log(findLongestSubstringNoRepeating("abcbda"));
+// console.log(findLongestSubstringNoRepeating("a"));
+// console.log(findLongestSubstringNoRepeating(""));
+// console.log(findLongestSubstringNoRepeating("pwwkew"));
 
-function findLongestSubstringNoRepeatingOptimized(str) {
-  let longestLength = 0;
+function findLongestSubstringNoRepeatingOptimized(s) {
+  if (s.length <= 1) return s.length;
+  const seenChars = {};
+  let left = 0,
+    longest = 0;
+  for (let right = 0; right < s.length; right++) {
+    // const curChar = s[right];
+    // const prevSeen = seenChars[s[right]];
 
-  for (let i = 0; i < str.length; i++) {
-    let j = i + 1;
-    // console.log(str[i] === str[j]);
-    // console.log("str[i]: ", str[i], " str[j]: ", str[j]);
-    while (str[j] && str[i] !== str[j]) {
-      //   console.log(str[i] === str[j]);
-      //   console.log("str[i]: ", str[i], " str[j]: ", str[j]);
-      //   console.log("i: ", i, " j: ", j, " j-i: ", j - i);
-
-      if (longestLength < j - i) {
-        longestLength = j - i;
-      }
-      j += 1;
+    if (seenChars[s[right]] >= left) {
+      left = seenChars[s[right]] + 1;
+    }
+    seenChars[s[right]] = right;
+    // adding a 1 because left and right are indexes, so off by 1
+    if (longest < right - left + 1) {
+      longest = right - left + 1;
     }
   }
-  return longestLength;
+  return longest;
 }
 
 // console.log(findLongestSubstringNoRepeatingOptimized("abccabb"));
 // console.log(findLongestSubstringNoRepeatingOptimized("ccccccc"));
 // console.log(findLongestSubstringNoRepeatingOptimized("abcbda"));
+// console.log(findLongestSubstringNoRepeatingOptimized("a"));
+// console.log(findLongestSubstringNoRepeatingOptimized(""));
+console.log(findLongestSubstringNoRepeatingOptimized("pwwkew"));
+
+//USING MAP
+
+function findLongestSubstringNoRepeatingOptimized(s) {
+  if (s.length <= 1) return s.length;
+  const seenChars = new Map();
+  let left = 0,
+    longest = 0;
+  for (let right = 0; right < s.length; right++) {
+    const curChar = s[right];
+    const prevSeen = seenChars.get(curChar);
+
+    if (prevSeen >= left) {
+      left = prevSeen + 1;
+    }
+    seenChars.set(curChar, right);
+
+    if (longest < right - left + 1) {
+      longest = right - left + 1;
+    }
+  }
+  return longest;
+}
