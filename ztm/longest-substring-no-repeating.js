@@ -41,6 +41,10 @@ function findLongestSubstringNoRepeating(str) {
     let j = i + 1;
     // console.log(str[i] === str[j]);
     // console.log("str[i]: ", str[i], " str[j]: ", str[j]);
+    if (str[i] === str[j] && j - i > longestLength) {
+      longestLength = 1;
+    }
+
     while (str[j] && str[i] !== str[j]) {
       //   console.log(str[i] === str[j]);
       //   console.log("str[i]: ", str[i], " str[j]: ", str[j]);
