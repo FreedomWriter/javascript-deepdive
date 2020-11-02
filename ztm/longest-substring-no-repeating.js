@@ -37,7 +37,7 @@ STEP THREE - SOLVE WITHOUT CODE
 function findLongestSubstringNoRepeating(str) {
   let longestLength = 0;
 
-  if (str.length <= 1) {
+  if (str.length === 1) {
     longestLength = 1;
   }
 
@@ -67,6 +67,7 @@ console.log(findLongestSubstringNoRepeating("abccabb"));
 console.log(findLongestSubstringNoRepeating("ccccccc"));
 console.log(findLongestSubstringNoRepeating("abcbda"));
 console.log(findLongestSubstringNoRepeating("a"));
+console.log(findLongestSubstringNoRepeating(""));
 
 function findLongestSubstringNoRepeatingOptimized(str) {
   let longestLength = 0;
