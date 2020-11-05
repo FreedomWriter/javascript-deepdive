@@ -39,11 +39,19 @@ function sumZero(arr) {
 /*
 Count Unique Values
 --------------------
-Implement a function called countUniqueValues, which accepts a sorted array, and count the unique alues in the array. There can be negabive numbers in the array, but it will always be sorted
+Implement a function called countUniqueValues, which accepts a sorted array, and count the unique alues in the array. There can be negative numbers in the array, but it will always be sorted
 */
-function countUniqueValues() {}
+function countUniqueValues(arr) {
+  let uniqueHashMap = new Set();
 
-// console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
-// console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
-// console.log(countUniqueValues([])); // 0
-// console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
+  for (let i = 0; i < arr.length; i++) {
+    uniqueHashMap.add(arr[i]);
+  }
+
+  return uniqueHashMap.size;
+}
+
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
+console.log(countUniqueValues([])); // 0
+console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
