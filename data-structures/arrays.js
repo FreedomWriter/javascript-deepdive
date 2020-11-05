@@ -1,12 +1,5 @@
 // create an array class
 
-class BlackPeople extends Freedom {
-  constructor() {
-    this.rights = rights;
-    this.time = Date.now();
-  }
-}
-
 class MyArray {
   constructor() {
     this.length = 0;
