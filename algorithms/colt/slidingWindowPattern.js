@@ -18,6 +18,10 @@ Write a function called maxSubarraySum which accepts an array of integers and a 
 function maxSubarraySum(arr, num) {
   let curMax = null;
 
+  for (let i = 0; i < arr.length; i++) {
+    let pointer = i;
+  }
+
   return curMax;
 }
 
