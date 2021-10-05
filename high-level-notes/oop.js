@@ -129,7 +129,7 @@
 //     // console.log(this);
 //     //  will throw an error becuse in order to use this in a subclass, super needs to be called
 //     super(name, weapon);
-//     console.log(this);
+//     // console.log(this);
 //     this.home = home;
 //   }
 
@@ -139,11 +139,11 @@
 // }
 
 // const Alf = new Elf("Alf", "Cavities!");
-// console.log(Alf.attack());
+// // console.log(Alf.attack());
 
 // const Brainy = new Smurf("Brainy", "Book Smarts!", "Toad Stool");
-// console.log(Brainy.attack());
-// console.log(Brainy.welcome());
+// // console.log(Brainy.attack());
+// // console.log(Brainy.welcome());
 
 // /*
 // THIS keyword
